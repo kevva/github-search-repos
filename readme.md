@@ -66,13 +66,13 @@ $ npm install --global github-search-repos
 ```
 $ github-search-repos --help
 
-Usage
-  $ github-search-repos gulp
-  $ github-search-repos gulp+languge:javascript --token 3b21d21c423c423b241
+  Usage
+    $ github-search-repos gulp
+    $ github-search-repos gulp+languge:javascript
 
-Options
-  -s, --sort     Sort results by either `stars` , `forks` or `updated`
-  -t, --token    GitHub authentication token
+  Options
+    -s, --sort     Sort results by either `stars`, `forks` or `updated`
+    -t, --token    GitHub authentication token
 ```
 
 ## License

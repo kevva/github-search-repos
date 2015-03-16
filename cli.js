@@ -12,11 +12,14 @@ var cli = meow({
 		'  $ github-search-repos gulp+languge:javascript',
 		'',
 		'Options',
-		'  -s, --sort     Sort results by either `stars` , `forks` or `updated`',
-		'  -t, --token    Github token to authenticate with'
+		'  -s, --sort     Sort results by either `stars`, `forks` or `updated`',
+		'  -t, --token    GitHub authentication token'
 	].join('\n')
 }, {
-	string: ['sort', 'token'],
+	string: [
+		'sort',
+		'token'
+	],
 	alias: {
 		s: 'sort',
 		t: 'token'
