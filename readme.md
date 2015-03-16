@@ -15,7 +15,7 @@ $ npm install --save github-search-repos
 ```js
 var githubSearchRepos = require('github-search-repos');
 
-githubSearchRepos('gulp+language:javascript', function (err, data) {
+githubSearchRepos('gulp+language:javascript', {token: 'xxx'}, function (err, data) {
 	console.log(data.items);
 	//=> [{id: 11167738, name: 'gulp', full_name: 'gulpjs/gulp', ...}, ...]
 });
