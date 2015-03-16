@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
+var chalk = require('chalk');
 var figures = require('figures');
 var meow = require('meow');
 var githubSearchRepos = require('./');
@@ -41,9 +42,9 @@ githubSearchRepos(cli.input[0], cli.flags, function (err, data) {
 		var stars = repo.stargazers_count + figures.star;
 
 		console.log([
-			repo.full_name + ' (' + stars + ')',
+			repo.full_name + ' ' + chalk.dim(stars),
 			repo.description,
-			repo.html_url,
+			chalk.dim(repo.html_url),
 			''
 		].join('\n'));
 	});
