@@ -1,12 +1,14 @@
 # github-search-repos [![Build Status](http://img.shields.io/travis/kevva/github-search-repos.svg?style=flat)](https://travis-ci.org/kevva/github-search-repos)
 
-> Search Github repositories
+> Search GitBub repositories
+
 
 ## Install
 
-```bash
+```
 $ npm install --save github-search-repos
 ```
+
 
 ## Usage
 
@@ -14,10 +16,6 @@ $ npm install --save github-search-repos
 var githubSearchRepos = require('github-search-repos');
 
 githubSearchRepos('gulp+language:javascript', function (err, data) {
-	if (err) {
-		throw err;
-	}
-
 	console.log(data.items);
 	//=> [{id: 11167738, name: 'gulp', full_name: 'gulpjs/gulp', ...}, ...]
 });
@@ -25,15 +23,16 @@ githubSearchRepos('gulp+language:javascript', function (err, data) {
 
 ## API
 
-### githubSearchRepos(query, opts, cb)
+### githubSearchRepos(query, options, callback)
 
 #### query
 
+*Required*  
 Type: `string`
 
-Search query to get results from.
+[Search query.](https://help.github.com/articles/search-syntax/)
 
-#### opts.token
+#### options.token
 
 Type: `string`
 
@@ -41,27 +40,32 @@ Token to authenticate with. Use this to increase the request count. Github suppo
 
 If you don't have a token you can generate a new one [here](https://github.com/settings/tokens/new).
 
-#### cb(err, data)
+#### callback(error, data)
 
 Type: `function`
 
-`data` contains an object with the search results in the `items` property.
+##### data
+
+Type: `object`
+
+Search results in the `items` property.
+
 
 ## CLI
 
-```sh
+```
 $ npm install --global github-search-repos
 ```
 
-```sh
+```
 $ github-search-repos --help
 
 Usage
   $ github-search-repos gulp
-  $ github-search-repos gulp+languge:javascript --token
+  $ github-search-repos gulp+languge:javascript --token 3b21d21c423c423b241
 
 Options
-  -t, --token    Github token to authenticate with
+  -t, --token    GitHub authentication token
 ```
 
 ## License
