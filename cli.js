@@ -26,6 +26,11 @@ var cli = meow({
 	}
 });
 
+if (!cli.input[0]) {
+	console.error('Search query required');
+	process.exit(1);
+}
+
 githubSearchRepos(cli.input[0], cli.flags, function (err, data) {
 	if (err) {
 		console.error(err.message);

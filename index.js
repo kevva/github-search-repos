@@ -3,6 +3,10 @@
 var got = require('got');
 
 module.exports = function (query, opts, cb) {
+	if (typeof query !== 'string') {
+		throw new Error('Search query required');
+	}
+
 	var url = 'https://api.github.com/search/repositories?q=' + query;
 	var headers = {
 		Accept: 'application/vnd.github.v3+json',
