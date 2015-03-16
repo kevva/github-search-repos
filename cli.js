@@ -9,8 +9,18 @@ var cli = meow({
 	help: [
 		'Usage',
 		'  $ github-search-repos gulp',
-
+		'  $ github-search-repos gulp+languge:javascript',
+		'',
+		'Options',
+		'  -s, --sort     Sort results by either `stars` , `forks` or `updated`',
+		'  -t, --token    Github token to authenticate with'
 	].join('\n')
+}, {
+	string: ['sort', 'token'],
+	alias: {
+		s: 'sort',
+		t: 'token'
+	}
 });
 
 githubSearchRepos(cli.input[0], cli.flags, function (err, data) {

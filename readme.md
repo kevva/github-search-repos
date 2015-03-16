@@ -40,6 +40,12 @@ Token to authenticate with. Use this to increase the request count. Github suppo
 
 If you don't have a token you can generate a new one [here](https://github.com/settings/tokens/new).
 
+#### options.sort
+
+Type: `string`
+
+Sort results by either `stars` , `forks` or `updated`. By default, results are sorted by best match.
+
 #### callback(error, data)
 
 Type: `function`
@@ -65,6 +71,7 @@ Usage
   $ github-search-repos gulp+languge:javascript --token 3b21d21c423c423b241
 
 Options
+  -s, --sort     Sort results by either `stars` , `forks` or `updated`
   -t, --token    GitHub authentication token
 ```
 

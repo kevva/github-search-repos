@@ -10,6 +10,10 @@ module.exports = function (query, opts, cb) {
 		'User-Agent': 'https://github.com/kevva/github-search-repos'
 	};
 
+	if (opts.sort) {
+		url += '&sort=' + opts.sort;
+	}
+
 	got(url, {headers: headers}, function (err, data) {
 		if (err) {
 			cb(err);
