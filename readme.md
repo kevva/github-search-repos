@@ -23,7 +23,7 @@ githubSearchRepos('gulp+language:javascript', function (err, data) {
 
 ## API
 
-### githubSearchRepos(query, options, callback)
+### githubSearchRepos(query, [options], callback)
 
 #### query
 
