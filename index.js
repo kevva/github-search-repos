@@ -24,7 +24,7 @@ module.exports = function (query, opts, cb) {
 		headers.Authorization = 'token ' + opts.token;
 	}
 
-	if (opts.sort) {
+	if (opts.sort === 'forks' || opts.sort === 'stars' || opts.sort === 'updated') {
 		url += '&sort=' + opts.sort;
 	}
 
