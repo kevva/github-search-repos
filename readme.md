@@ -75,6 +75,7 @@ $ github-search-repos --help
     -t, --token    GitHub authentication token
 ```
 
+
 ## License
 
 MIT © [Kevin Mårtensson](https://github.com/kevva)

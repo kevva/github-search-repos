@@ -9,8 +9,8 @@ test(function (t) {
 
 	githubSearchRepos('gulp+language:javascript', {token: token}, function (err, data) {
 		t.assert(!err, err);
-		t.assert(!data.incomplete_results);
-		t.assert(data.items.length);
-		t.assert(data.items[0].name === 'gulp');
+		t.assert(!data.incomplete_results, data.incomplete_results);
+		t.assert(data.items.length, data.items.length);
+		t.assert(data.items[0].name === 'gulp', data.items[0].name);
 	});
 });
