@@ -2,6 +2,8 @@
 
 > Search GitBub repositories
 
+![](https://cloud.githubusercontent.com/assets/709159/7230409/dda004ce-e76d-11e4-9747-050242b8b408.png)
+
 
 ## Install
 
@@ -71,8 +73,9 @@ $ github-search-repos --help
     $ github-search-repos gulp+languge:javascript
 
   Options
-    -s, --sort     Sort results by either `stars`, `forks` or `updated`
-    -t, --token    GitHub authentication token
+    -i, --interactive    Show results in interactive interface
+    -s, --sort           Sort results by either `stars`, `forks` or `updated`
+    -t, --token          GitHub authentication token
 ```
 
 

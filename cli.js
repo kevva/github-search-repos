@@ -3,7 +3,9 @@
 
 var chalk = require('chalk');
 var figures = require('figures');
+var inquirer = require('inquirer');
 var meow = require('meow');
+var opn = require('opn');
 var githubSearchRepos = require('./');
 
 var cli = meow({
@@ -13,23 +15,74 @@ var cli = meow({
 		'  $ github-search-repos gulp+languge:javascript',
 		'',
 		'Options',
-		'  -s, --sort     Sort results by either `stars`, `forks` or `updated`',
-		'  -t, --token    GitHub authentication token'
+		'  -i, --interactive    Show results in interactive interface',
+		'  -s, --sort           Sort results by either `stars`, `forks` or `updated`',
+		'  -t, --token          GitHub authentication token'
 	].join('\n')
 }, {
+	boolean: ['interactive'],
 	string: [
 		'sort',
 		'token'
 	],
 	alias: {
+		i: 'interactive',
 		s: 'sort',
 		t: 'token'
 	}
 });
 
-if (!cli.input[0]) {
-	console.error('Search query required');
-	process.exit(1);
+function listResults(repos) {
+	inquirer.prompt([{
+		name: 'results',
+		message: 'Search results:',
+		type: 'list',
+		choices: repos.map(function (repo) {
+			var stars = repo.stargazers_count + figures.star;
+
+			return {
+				name: repo.full_name + ' ' + chalk.dim(stars),
+				value: repo.html_url
+			};
+		})
+	}], function (answer) {
+		opn(answer.results);
+		process.exit();
+	});
+}
+
+function init() {
+	inquirer.prompt([{
+		name: 'query',
+		message: 'Search for GitHub repositories'
+	}], function (answer) {
+		githubSearchRepos(answer.query, function (err, data) {
+			if (err) {
+				console.error(err.message);
+				process.exit(1);
+			}
+
+			listResults(data.items);
+		});
+	});
+}
+
+if (!cli.input.length) {
+	init();
+	return;
+}
+
+if (cli.flags.interactive) {
+	githubSearchRepos(cli.input[0], cli.flags, function (err, data) {
+		if (err) {
+			console.error(err.message);
+			process.exit(1);
+		}
+
+		listResults(data.items);
+	});
+
+	return;
 }
 
 githubSearchRepos(cli.input[0], cli.flags, function (err, data) {
