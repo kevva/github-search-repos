@@ -1,4 +1,4 @@
-# github-search-repos [![Build Status](http://img.shields.io/travis/kevva/github-search-repos.svg?style=flat)](https://travis-ci.org/kevva/github-search-repos)
+# github-search-repos [![Build Status](https://travis-ci.org/kevva/github-search-repos.svg?branch=master)](https://travis-ci.org/kevva/github-search-repos)
 
 > Search GitBub repositories
 
