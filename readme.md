@@ -2,7 +2,7 @@
 
 > Search GitBub repositories
 
-![](https://cloud.githubusercontent.com/assets/709159/7230409/dda004ce-e76d-11e4-9747-050242b8b408.png)
+![](https://cloud.githubusercontent.com/assets/709159/7231098/61955acc-e773-11e4-9f4b-e96657672cdd.png)
 
 
 ## Install
@@ -69,6 +69,7 @@ $ npm install --global github-search-repos
 $ github-search-repos --help
 
   Usage
+    $ github-search-repos
     $ github-search-repos gulp
     $ github-search-repos gulp+languge:javascript
 

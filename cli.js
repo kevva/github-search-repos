@@ -11,6 +11,7 @@ var githubSearchRepos = require('./');
 var cli = meow({
 	help: [
 		'Usage',
+		'  $ github-search-repos',
 		'  $ github-search-repos gulp',
 		'  $ github-search-repos gulp+languge:javascript',
 		'',
