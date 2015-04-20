@@ -1,6 +1,6 @@
 'use strict';
 
-var got = require('got');
+var ghGot = require('gh-got');
 
 module.exports = function (query, opts, cb) {
 	opts = opts || {};
@@ -14,26 +14,18 @@ module.exports = function (query, opts, cb) {
 		opts = {};
 	}
 
-	var url = 'https://api.github.com/search/repositories?q=' + query;
-	var headers = {
-		Accept: 'application/vnd.github.v3+json',
-		'User-Agent': 'https://github.com/kevva/github-search-repos'
-	};
-
-	if (opts.token) {
-		headers.Authorization = 'token ' + opts.token;
-	}
+	var url = 'search/repositories?q=' + query;
 
 	if (opts.sort === 'forks' || opts.sort === 'stars' || opts.sort === 'updated') {
 		url += '&sort=' + opts.sort;
 	}
 
-	got(url, {headers: headers}, function (err, data) {
+	ghGot(url, opts, function (err, data) {
 		if (err) {
 			cb(err);
 			return;
 		}
 
-		cb(null, JSON.parse(data));
+		cb(null, data);
 	});
 };
