@@ -39,9 +39,10 @@ function listResults(repos) {
 		type: 'list',
 		choices: repos.map(function (repo) {
 			var stars = repo.stargazers_count + figures.star;
+			var fullName = repo.full_name.split('/');
 
 			return {
-				name: repo.full_name + ' ' + chalk.dim(stars),
+				name: fullName[0] + '/' + chalk.blue.bold(fullName[1]) + ' ' + chalk.dim(stars),
 				value: repo.html_url
 			};
 		})
@@ -93,9 +94,10 @@ githubSearchRepos(cli.input[0], cli.flags, function (err, data) {
 
 	data.items.forEach(function (repo) {
 		var stars = repo.stargazers_count + figures.star;
+		var fullName = repo.full_name.split('/');
 
 		console.log([
-			repo.full_name + ' ' + chalk.dim(stars),
+			fullName[0] + '/' + chalk.blue.bold(fullName[1]) + ' ' + chalk.dim(stars),
 			repo.description,
 			chalk.dim(repo.html_url),
 			''
