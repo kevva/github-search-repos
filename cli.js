@@ -49,7 +49,6 @@ function listResults(repos) {
 		})
 	}], function (answer) {
 		opn(answer.results);
-		process.exit();
 	});
 }
 
