@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 'use strict';
-
 var chalk = require('chalk');
 var figures = require('figures');
 var inquirer = require('inquirer');
@@ -19,7 +18,7 @@ var cli = meow({
 		'  -i, --interactive    Show results in interactive interface',
 		'  -s, --sort           Sort results by either `stars`, `forks` or `updated`',
 		'  -t, --token          GitHub authentication token'
-	].join('\n')
+	]
 }, {
 	boolean: ['interactive'],
 	string: [
