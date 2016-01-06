@@ -1,16 +1,11 @@
-'use strict';
+import test from 'ava';
+import fn from './';
 
-var githubSearchRepos = require('./');
-var test = require('ava');
+test(async t => {
+	const token = '523ef691191741c99d5afbcfe58079bfa0038771';
+	const data = await fn('gulp+language:javascript', {token: token});
 
-test(function (t) {
-	t.plan(4);
-	var token = '523ef691191741c99d5afbcfe58079bfa0038771';
-
-	githubSearchRepos('gulp+language:javascript', {token: token}, function (err, data) {
-		t.assert(!err, err);
-		t.assert(!data.incomplete_results, data.incomplete_results);
-		t.assert(data.items.length, data.items.length);
-		t.assert(data.items[0].name === 'gulp', data.items[0].name);
-	});
+	t.notOk(data.incomplete_results);
+	t.ok(data.items.length);
+	t.is(data.items[0].name, 'gulp');
 });

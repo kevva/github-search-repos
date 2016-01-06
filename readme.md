@@ -15,9 +15,9 @@ $ npm install --save github-search-repos
 ## Usage
 
 ```js
-var githubSearchRepos = require('github-search-repos');
+const githubSearchRepos = require('github-search-repos');
 
-githubSearchRepos('gulp+language:javascript', function (err, data) {
+githubSearchRepos('gulp+language:javascript').then(data => {
 	console.log(data.items);
 	//=> [{id: 11167738, name: 'gulp', full_name: 'gulpjs/gulp', ...}, ...]
 });
@@ -25,7 +25,7 @@ githubSearchRepos('gulp+language:javascript', function (err, data) {
 
 ## API
 
-### githubSearchRepos(query, [options], callback)
+### githubSearchRepos(query, [options])
 
 #### query
 
@@ -47,16 +47,6 @@ If you don't have a token you can generate a new one [here](https://github.com/s
 Type: `string`
 
 Sort results by either `stars` , `forks` or `updated`. By default, results are sorted by best match.
-
-#### callback(error, data)
-
-Type: `function`
-
-##### data
-
-Type: `object`
-
-Search results in the `items` property.
 
 
 ## CLI

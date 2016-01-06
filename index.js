@@ -1,17 +1,12 @@
 'use strict';
-
 var ghGot = require('gh-got');
+var Promise = require('pinkie-promise');
 
-module.exports = function (query, opts, cb) {
+module.exports = function (query, opts) {
 	opts = opts || {};
 
 	if (typeof query !== 'string') {
-		throw new Error('Search query required');
-	}
-
-	if (!cb && typeof opts === 'function') {
-		cb = opts;
-		opts = {};
+		return Promise.reject(new Error('Search query required'));
 	}
 
 	var url = 'search/repositories?q=' + query;
@@ -20,12 +15,7 @@ module.exports = function (query, opts, cb) {
 		url += '&sort=' + opts.sort;
 	}
 
-	ghGot(url, opts, function (err, data) {
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		cb(null, data);
+	return ghGot(url, opts).then(function (res) {
+		return res.body;
 	});
 };

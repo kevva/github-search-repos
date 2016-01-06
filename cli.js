@@ -56,12 +56,7 @@ function init() {
 		name: 'query',
 		message: 'Search for GitHub repositories'
 	}], function (answer) {
-		githubSearchRepos(answer.query, function (err, data) {
-			if (err) {
-				console.error(err.message);
-				process.exit(1);
-			}
-
+		githubSearchRepos(answer.query).then(function (data) {
 			listResults(data.items);
 		});
 	});
@@ -73,33 +68,21 @@ if (!cli.input.length) {
 }
 
 if (cli.flags.interactive) {
-	githubSearchRepos(cli.input[0], cli.flags, function (err, data) {
-		if (err) {
-			console.error(err.message);
-			process.exit(1);
-		}
-
+	githubSearchRepos(cli.input[0], cli.flags).then(function (data) {
 		listResults(data.items);
 	});
+} else {
+	githubSearchRepos(cli.input[0], cli.flags).then(function (data) {
+		data.items.forEach(function (repo) {
+			var stars = repo.stargazers_count + figures.star;
+			var fullName = repo.full_name.split('/');
 
-	return;
-}
-
-githubSearchRepos(cli.input[0], cli.flags, function (err, data) {
-	if (err) {
-		console.error(err.message);
-		process.exit(1);
-	}
-
-	data.items.forEach(function (repo) {
-		var stars = repo.stargazers_count + figures.star;
-		var fullName = repo.full_name.split('/');
-
-		console.log([
-			fullName[0] + '/' + chalk.blue.bold(fullName[1]) + ' ' + chalk.dim(stars),
-			repo.description,
-			chalk.dim(repo.html_url),
-			''
-		].join('\n'));
+			console.log([
+				fullName[0] + '/' + chalk.blue.bold(fullName[1]) + ' ' + chalk.dim(stars),
+				repo.description,
+				chalk.dim(repo.html_url),
+				''
+			].join('\n'));
+		});
 	});
-});
+}
