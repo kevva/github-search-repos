@@ -65,24 +65,24 @@ function init() {
 if (!cli.input.length) {
 	init();
 	return;
-}
-
-if (cli.flags.interactive) {
-	githubSearchRepos(cli.input[0], cli.flags).then(function (data) {
-		listResults(data.items);
-	});
 } else {
-	githubSearchRepos(cli.input[0], cli.flags).then(function (data) {
-		data.items.forEach(function (repo) {
-			var stars = repo.stargazers_count + figures.star;
-			var fullName = repo.full_name.split('/');
-
-			console.log([
-				fullName[0] + '/' + chalk.blue.bold(fullName[1]) + ' ' + chalk.dim(stars),
-				repo.description,
-				chalk.dim(repo.html_url),
-				''
-			].join('\n'));
+	if (cli.flags.interactive) {
+		githubSearchRepos(cli.input[0], cli.flags).then(function (data) {
+			listResults(data.items);
 		});
-	});
+	} else {
+		githubSearchRepos(cli.input[0], cli.flags).then(function (data) {
+			data.items.forEach(function (repo) {
+				var stars = repo.stargazers_count + figures.star;
+				var fullName = repo.full_name.split('/');
+
+				console.log([
+					fullName[0] + '/' + chalk.blue.bold(fullName[1]) + ' ' + chalk.dim(stars),
+					repo.description,
+					chalk.dim(repo.html_url),
+					''
+				].join('\n'));
+			});
+		});
+	}
 }
