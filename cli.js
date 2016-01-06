@@ -15,9 +15,9 @@ var cli = meow({
 		'  $ github-search-repos gulp+languge:javascript',
 		'',
 		'Options',
-		'  -i, --interactive    Show results in interactive interface',
-		'  -s, --sort           Sort results by either `stars`, `forks` or `updated`',
-		'  -t, --token          GitHub authentication token'
+		'  -i, --interactive  Show results in interactive interface',
+		'  -s, --sort         Sort results by either `stars`, `forks` or `updated`',
+		'  -t, --token        GitHub authentication token'
 	]
 }, {
 	boolean: ['interactive'],
