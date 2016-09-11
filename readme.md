@@ -1,6 +1,6 @@
 # github-search-repos [![Build Status](https://travis-ci.org/kevva/github-search-repos.svg?branch=master)](https://travis-ci.org/kevva/github-search-repos)
 
-> Search GitBub repositories
+> Search GitHub repositories
 
 
 ## Install
