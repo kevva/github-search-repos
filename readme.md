@@ -29,12 +29,13 @@ githubSearchRepos('gulp+language:javascript').then(data => {
 
 #### query
 
-*Required*  
 Type: `string`
 
 [Search query.](https://help.github.com/articles/search-syntax/)
 
-#### options.token
+#### options
+
+##### token
 
 Type: `string`
 
@@ -42,7 +43,7 @@ Token to authenticate with. Use this to increase the request count. Github suppo
 
 If you don't have a token you can generate a new one [here](https://github.com/settings/tokens/new).
 
-#### options.sort
+##### sort
 
 Type: `string`
 
