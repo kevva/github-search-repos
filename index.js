@@ -5,7 +5,7 @@ module.exports = (query, opts) => {
 	opts = opts || {};
 
 	if (typeof query !== 'string') {
-		return Promise.reject(new Error('Search query required'));
+		return Promise.reject(new TypeError(`Expected a \`string\`, got \`${typeof query}\``));
 	}
 
 	let url = `search/repositories?q=${query}`;
