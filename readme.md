@@ -2,8 +2,6 @@
 
 > Search GitBub repositories
 
-![](https://cloud.githubusercontent.com/assets/709159/7231098/61955acc-e773-11e4-9f4b-e96657672cdd.png)
-
 
 ## Install
 
@@ -50,25 +48,9 @@ Type: `string`
 Sort results by either `stars` , `forks` or `updated`. By default, results are sorted by best match.
 
 
-## CLI
+## Related
 
-```
-$ npm install --global github-search-repos
-```
-
-```
-$ github-search-repos --help
-
-  Usage
-    $ github-search-repos
-    $ github-search-repos gulp
-    $ github-search-repos gulp+languge:javascript
-
-  Options
-    -i, --interactive  Show results in interactive interface
-    -s, --sort         Sort results by either `stars`, `forks` or `updated`
-    -t, --token        GitHub authentication token
-```
+* [github-search-repos-cli](https://github.com/kevva/github-search-repos-cli) - CLI for this module
 
 
 ## License
