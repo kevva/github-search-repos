@@ -2,7 +2,7 @@ import test from 'ava';
 import m from './';
 
 test('search for repositories', async t => {
-	const data = await m('gulp+language:javascript', {token: '523ef691191741c99d5afbcfe58079bfa0038771'});
+	const data = await m('gulp+language:javascript', {token: process.env.GITHUB_TOKEN});
 
 	t.falsy(data.incomplete_results);
 	t.truthy(data.items.length);
@@ -10,5 +10,5 @@ test('search for repositories', async t => {
 });
 
 test('accepts a string', async t => {
-	t.throws(m({}), 'Expected a `string`, got `object`');
+	await t.throws(m({}), 'Expected a `string`, got `object`');
 });
